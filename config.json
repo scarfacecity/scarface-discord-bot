@@ -1,0 +1,69 @@
+{
+  "embeds": {
+    "body": {
+      "color": "#ff0000",
+      "image": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048",
+      "thumbnail": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048"
+    },
+    "footer": {
+      "icon": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048",
+      "text": "Copyright by Scarface | Technical Support ➔ oxince#9999"
+    },
+    "author": {
+      "name": "Scarface City",
+      "url": "https://github.com/oxince",
+      "icon": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048"
+    }
+  },
+
+  "activity": {
+    "type": "WATCHING",
+    "name": "Scarface | Roleplay",
+    "streamURL": "https://www.twitch.tv/craniaxiv"
+  },
+
+  "ticketCategories": {
+    "allgemein": "842385939807862795",
+    "entbannung": "842385863609417748",
+    "fraktion": "842385903333933067",
+    "spenden": "842385846048391168",
+    "team": "842385916077277194",
+    "community": "842385893074796584",
+    "rueckerstattung": "842385878151987250"
+  },
+
+  "ticketNames": {
+    "allgemein": "allgemein-{username}",
+    "entbannung": "entbannung-{username}",
+    "fraktion": "fraktion-{username}",
+    "spenden": "spenden-{username}",
+    "team": "team-{username}",
+    "community": "community-{username}",
+    "rueckerstattung": "rueckerstattung-{username}"
+  },
+
+  "ticketReasons": {
+    "allgemein": "\uD83D\uDCE9",
+    "entbannung": "\uD83D\uDD28",
+    "fraktion": "\uD83D\uDD75",
+    "spenden": "\uD83D\uDC8E",
+    "team": "\uD83E\uDDD1\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1",
+    "community": "⚡",
+    "rueckerstattung": "\uD83E\uDD1D"
+  },
+
+  "ticketRoles": {
+    "allgemein": "842385992237449286",
+    "entbannung": "842385989116755968",
+    "fraktion": "842385987887169566",
+    "spenden": "842385987887169566",
+    "team": "842385987887169566",
+    "community": "842385987887169566",
+    "rueckerstattung": "842385987887169566"
+  },
+
+  "ticketChannel": "842385760706625546",
+
+  "prefix": "!",
+  "token": ""
+}

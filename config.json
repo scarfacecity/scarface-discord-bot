@@ -33,7 +33,7 @@
   },
 
   "ticketNames": {
-    "allgemein": "allgemein-{username}",
+    "allgemein": "allgemein-username",
     "entbannung": "entbannung-{username}",
     "fraktion": "fraktion-{username}",
     "spenden": "spenden-{username}",
@@ -49,7 +49,9 @@
     "spenden": "\uD83D\uDC8E",
     "team": "\uD83E\uDDD1\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1",
     "community": "⚡",
-    "rueckerstattung": "\uD83E\uDD1D"
+    "rueckerstattung": "\uD83E\uDD1D",
+
+    "closeTicket": "\uD83D\uDD12"
   },
 
   "ticketRoles": {
@@ -62,7 +64,8 @@
     "rueckerstattung": "842385987887169566"
   },
 
-  "ticketChannel": "842385760706625546",
+  "ticketChannel": "843520513028521994",
+  "ticketLogs": "842385957038587975",
 
   "prefix": "!",
   "token": ""

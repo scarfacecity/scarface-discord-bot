@@ -66,6 +66,14 @@ client.on('message', message => {
     if (command === 'ticket') {
         client.commands.get('ticket').execute(message, args, Discord, client);
     }
+
+    if (command === 'close') {
+        client.commands.get('close').execute(message, args, Discord, client);
+    }
+
+    if (command === 'rename') {
+        client.commands.get('rename').execute(message, args, Discord, client);
+    }
 })
 
 client.login(config.token);

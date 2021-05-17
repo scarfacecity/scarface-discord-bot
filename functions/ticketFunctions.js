@@ -2,9 +2,9 @@ const array = [];
 const config = require("../config.json");
 
 module.exports = class closeTicket {
-    async closeTicket(message, authorTag) {
-        if (!array.includes(message.channel)) {
-            array.push(message.channel);
+    async closeTicket(id, message, authorTag) {
+        if (!array.includes(id)) {
+            array.push(id);
             await message.channel.send({
                 embed: {
                     "title": "Scarface City",
@@ -29,14 +29,13 @@ module.exports = class closeTicket {
 
             setTimeout(() => {
                 message.channel.delete();
-                array.splice(array.indexOf(message.channel), 1);
+                array.splice(array.indexOf(id), 1);
             }, 5000)
         }
     }
 
     renameTicket(message, authorTag, name) {
         message.channel.setName(name);
-
         message.channel.send({
             embed: {
                 "title": "Scarface City",

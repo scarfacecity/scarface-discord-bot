@@ -13,7 +13,7 @@ module.exports = {
             message.channel.parentID === config.ticketCategories.community ||
             message.channel.parentID === config.ticketCategories.rueckerstattung) {
 
-            await new ticketFunctions().closeTicket(message, message.author.tag);
+            new ticketFunctions().closeTicket(message.channel.id, message, message.author.tag);
             await message.delete();
         }
     }

@@ -3,7 +3,7 @@
     "body": {
       "color": "#ff0000",
       "image": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048",
-      "thumbnail": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048"
+      "thumbnail": "https://cdn.discordapp.com/attachments/838763863805526048/843457915934212106/Logo.png"
     },
     "footer": {
       "icon": "https://cdn.discordapp.com/icons/842385739672453140/6349692feaa0d96f47315c7ec0f5cbf9.png?size=2048",
@@ -23,23 +23,23 @@
   },
 
   "ticketCategories": {
-    "allgemein": "842385939807862795",
-    "entbannung": "842385863609417748",
-    "fraktion": "842385903333933067",
-    "spenden": "842385846048391168",
-    "team": "842385916077277194",
-    "community": "842385893074796584",
-    "rueckerstattung": "842385878151987250"
+    "allgemein": "839876666591281233",
+    "entbannung": "839876584781774849",
+    "fraktion": "839876564593934346",
+    "spenden": "839876543404441671",
+    "team": "839876629894397952",
+    "community": "839904297194225664",
+    "rueckerstattung": "839876614493044736"
   },
 
   "ticketNames": {
     "allgemein": "allgemein-username",
-    "entbannung": "entbannung-{username}",
-    "fraktion": "fraktion-{username}",
-    "spenden": "spenden-{username}",
-    "team": "team-{username}",
-    "community": "community-{username}",
-    "rueckerstattung": "rueckerstattung-{username}"
+    "entbannung": "entbannung-username",
+    "fraktion": "fraktion-username",
+    "spenden": "spenden-username",
+    "team": "team-username",
+    "community": "community-username",
+    "rueckerstattung": "rueckerstattung-username"
   },
 
   "ticketReasons": {
@@ -51,21 +51,21 @@
     "community": "⚡",
     "rueckerstattung": "\uD83E\uDD1D",
 
-    "closeTicket": "\uD83D\uDD12"
+    "closeTicket": "🔒"
   },
 
   "ticketRoles": {
-    "allgemein": "842385992237449286",
-    "entbannung": "842385989116755968",
-    "fraktion": "842385987887169566",
-    "spenden": "842385987887169566",
-    "team": "842385987887169566",
-    "community": "842385987887169566",
-    "rueckerstattung": "842385987887169566"
+    "allgemein": "839834661857132554",
+    "entbannung": "839834658422390844",
+    "fraktion": "839834656508608562",
+    "spenden": "843249467993358407",
+    "team": "839834635759255572",
+    "community": "839834636615024681",
+    "rueckerstattung": "839834655595429898"
   },
 
-  "ticketChannel": "843520513028521994",
-  "ticketLogs": "842385957038587975",
+  "ticketChannel": "839834977171669002",
+  "ticketLogs": "",
 
   "prefix": "!",
   "token": ""

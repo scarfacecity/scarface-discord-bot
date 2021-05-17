@@ -1,5 +1,5 @@
 const config = require("../config.json");
-const ticketFunctions = require('../functions/ticketFunctions.js');
+const array = [];
 
 module.exports = {
     event: "messageReactionAdd",
@@ -14,18 +14,25 @@ module.exports = {
         if (user.bot) return;
 
         if (reaction.message.channel.id === config.ticketChannel) {
-            if (reaction.emoji.name === config.ticketReasons.allgemein) createTicket(reaction, user, config.ticketCategories.allgemein, config.ticketRoles.allgemein, config.ticketNames.allgemein.replace("username", user.username), "Allgemeines Anliegen")
-            if (reaction.emoji.name === config.ticketReasons.entbannung) createTicket(reaction, user, config.ticketCategories.entbannung, config.ticketRoles.entbannung, config.ticketNames.entbannung.replace("username", user.username), "Entbannungs Anliegen")
-            if (reaction.emoji.name === config.ticketReasons.fraktion) createTicket(reaction, user, config.ticketCategories.fraktion, config.ticketRoles.fraktion, config.ticketNames.fraktion.replace("username", user.username), "Fraktions Anliegen")
-            if (reaction.emoji.name === config.ticketReasons.spenden) createTicket(reaction, user, config.ticketCategories.spenden, config.ticketRoles.spenden, config.ticketNames.spenden.replace("username", user.username), "Spenden Anliegen")
-            if (reaction.emoji.name === config.ticketReasons.team) createTicket(reaction, user, config.ticketCategories.team, config.ticketRoles.team, config.ticketNames.team.replace("username", user.username), "Team Anliegen")
-            if (reaction.emoji.name === config.ticketReasons.community) createTicket(reaction, user, config.ticketCategories.community, config.ticketRoles.community, config.ticketNames.community.replace("username", user.username), "Community Anliegen")
-            if (reaction.emoji.name === config.ticketReasons.rueckerstattung) createTicket(reaction, user, config.ticketCategories.rueckerstattung, config.ticketRoles.rueckerstattung, config.ticketNames.rueckerstattung.replace("username", user.username), "Rückerstattungs Anliegen")
+            if (!array.includes(user.id)) {
+                if (reaction.emoji.name === config.ticketReasons.allgemein) createTicket(reaction, user, config.ticketCategories.allgemein, config.ticketRoles.allgemein, config.ticketNames.allgemein.replace("username", user.username), "Allgemeines Anliegen")
+                if (reaction.emoji.name === config.ticketReasons.entbannung) createTicket(reaction, user, config.ticketCategories.entbannung, config.ticketRoles.entbannung, config.ticketNames.entbannung.replace("username", user.username), "Entbannungs Anliegen")
+                if (reaction.emoji.name === config.ticketReasons.fraktion) createTicket(reaction, user, config.ticketCategories.fraktion, config.ticketRoles.fraktion, config.ticketNames.fraktion.replace("username", user.username), "Fraktions Anliegen")
+                if (reaction.emoji.name === config.ticketReasons.spenden) createTicket(reaction, user, config.ticketCategories.spenden, config.ticketRoles.spenden, config.ticketNames.spenden.replace("username", user.username), "Spenden Anliegen")
+                if (reaction.emoji.name === config.ticketReasons.team) createTicket(reaction, user, config.ticketCategories.team, config.ticketRoles.team, config.ticketNames.team.replace("username", user.username), "Team Anliegen")
+                if (reaction.emoji.name === config.ticketReasons.community) createTicket(reaction, user, config.ticketCategories.community, config.ticketRoles.community, config.ticketNames.community.replace("username", user.username), "Community Anliegen")
+                if (reaction.emoji.name === config.ticketReasons.rueckerstattung) createTicket(reaction, user, config.ticketCategories.rueckerstattung, config.ticketRoles.rueckerstattung, config.ticketNames.rueckerstattung.replace("username", user.username), "Rückerstattungs Anliegen")
 
-            await reaction.users.remove(user);
+                array.push(user.id);
+                setTimeout(() => {
+                    array.splice(array.indexOf(user.id), 1);
+                }, 60000)
+
+                await reaction.users.remove(user);
+            }
         }
 
-        if (reaction.emoji.name === config.ticketReasons.closeTicket && reaction.message.channel.parentID === config.ticketCategories.allgemein ||
+        /*if (reaction.emoji.name === config.ticketReasons.closeTicket && reaction.message.channel.parentID === config.ticketCategories.allgemein ||
             reaction.message.channel.parentID === config.ticketCategories.entbannung ||
             reaction.message.channel.parentID === config.ticketCategories.fraktion ||
             reaction.message.channel.parentID === config.ticketCategories.spenden ||
@@ -33,9 +40,9 @@ module.exports = {
             reaction.message.channel.parentID === config.ticketCategories.community ||
             reaction.message.channel.parentID === config.ticketCategories.rueckerstattung) {
 
-            await new ticketFunctions(reaction.message, user.tag).closeTicket();
+            await new ticketFunctions(reaction.message.channel.id, reaction.message, user.tag).closeTicket();
             await reaction.users.remove(user);
-        }
+        }*/
     }
 }
 
@@ -59,10 +66,10 @@ function createTicket(reaction, user, parentID, supportRoleID, ticketName, ticke
             type: 'text',
             parent: parentID
         }).then(async channel => {
-            channel.send({
+            channel.send("<@" + user.id + ">", {
                 embed: {
                     "title": ticketMessageTitle,
-                    "description": "Bitte beschreibe uns schonmal dein Anliegen sodass wir dir schnellst möglichst helfen können!\n\nSollte sich dein Anliegen geklärt haben, reagiere auf diese Nachricht mit 🔒",
+                    "description": "Bitte beschreibe uns schonmal dein Anliegen sodass wir dir schnellst möglichst helfen können!\n\nSollte sich dein Anliegen geklärt haben, sende eine Nachricht mit dem Inhalt `!close` in den Chat.",
 
                     "color": config.embeds.body.color,
                     "author": {
@@ -79,9 +86,7 @@ function createTicket(reaction, user, parentID, supportRoleID, ticketName, ticke
                         "url": config.embeds.body.thumbnail
                     }
                 }
-            }).then(async message => {
-                await message.react(config.ticketReasons.closeTicket)
-            });
+            })
         });
     }
 }

@@ -5,7 +5,7 @@ module.exports = {
         const config = require("../config.json");
 
         if (args.length === 0) {
-            if (message.member.hasPermission("ADMINISTRATOR")) {
+            if (message.member.hasPermission("ADMINISTRATOR") || message.member.id === "796088860253356082") {
                 await message.channel.send({
                     embed: {
                         "title": "Reagiere mit ...",
@@ -19,7 +19,7 @@ module.exports = {
 
                         "color": config.embeds.body.color,
                         "author": {
-                            "name": config.embeds.author.name + " - Ticket System",
+                            "name": config.embeds.author.name,
                             "url": config.embeds.author.url,
                             "icon_url": config.embeds.author.icon
                         },

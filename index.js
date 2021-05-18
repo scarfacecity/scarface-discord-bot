@@ -3,7 +3,10 @@ process.on('uncaughtException', function (err) {
 });
 
 const Discord = require('discord.js');
+
 const fs = require('fs');
+
+const logFunctions = require('./functions/logFunctions.js');
 
 const config = require('./config.json');
 const client = new Discord.Client({
@@ -40,6 +43,9 @@ fs.readdir('./events/', (err, files) => {
 });
 
 client.on('ready', () => {
+    new logFunctions().sendLog(config.oxince.logs.start, "Bot wurde gestartet!")
+    client.user.setUsername("[SF] System")
+
     if (config.activity.type !== "STREAMING") {
         client.user.setActivity({
             type: config.activity.type,
@@ -58,6 +64,32 @@ client.on('ready', () => {
 client.on('message', message => {
     if (message.author.bot) return;
 
+    if (message.channel.id === "839834960390651944" && !message.content.startsWith("!")) {
+        message.channel.send("@everyone", {
+            embed: {
+                "title": "Scarface City - Informationen",
+                "description": message.content,
+
+                "color": config.embeds.body.color,
+                "author": {
+                    "name": config.embeds.author.name,
+                    "url": config.embeds.author.url,
+                    "icon_url": config.embeds.author.icon
+                },
+                "footer": {
+                    "text": "Gesendet von " + message.author.tag,
+                    "icon_url": config.embeds.footer.icon
+                },
+                "timestamp": Date.now(),
+                "thumbnail": {
+                    "url": config.embeds.body.thumbnail
+                }
+            }
+        })
+
+        message.delete()
+    }
+
     const args = message.content.slice(config.prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
@@ -65,15 +97,42 @@ client.on('message', message => {
 
     if (command === 'ticket') {
         client.commands.get('ticket').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
     }
 
     if (command === 'close') {
         client.commands.get('close').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
+    }
+
+    if (command === 'delete') {
+        client.commands.get('close').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
     }
 
     if (command === 'rename') {
         client.commands.get('rename').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
+    }
+
+    if (command === 'purge') {
+        client.commands.get('purge').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
+    }
+
+    if (command === 'kick') {
+        client.commands.get('kick').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
+    }
+
+    if (command === 'ban') {
+        client.commands.get('ban').execute(message, args, Discord, client);
+        sendCommandLog(message.author, message.content);
     }
 })
+
+function sendCommandLog(user, command) {
+    new logFunctions().sendLog(config.oxince.logs.commands, "`" + user.tag + "` führte den Command `" + command + "` aus!")
+}
 
 client.login(config.token);

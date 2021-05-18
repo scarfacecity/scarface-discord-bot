@@ -68,12 +68,12 @@ function createTicket(reaction, user, parentID, supportRoleID, ticketName, ticke
         }).then(async channel => {
             channel.send("<@" + user.id + ">", {
                 embed: {
-                    "title": ticketMessageTitle,
+                    "title": ticketMessageTitle + " - Ticket System",
                     "description": "Bitte beschreibe uns schonmal dein Anliegen sodass wir dir schnellst möglichst helfen können!\n\nSollte sich dein Anliegen geklärt haben, sende eine Nachricht mit dem Inhalt `!close` in den Chat.",
 
                     "color": config.embeds.body.color,
                     "author": {
-                        "name": config.embeds.author.name + " - Ticket System",
+                        "name": config.embeds.author.name,
                         "url": config.embeds.author.url,
                         "icon_url": config.embeds.author.icon
                     },
